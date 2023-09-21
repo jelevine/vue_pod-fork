@@ -1,143 +1,109 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class = buttons>
+  <button class = 'details' id = "nob">Clone</button>
+  <button class = 'details' id = 'delete'>Delete last</button>
+  <button class = 'details' id = 'background'>Change Background</button>
+  <button class = 'details' id = 'writing'>Change title</button>
+</div>
+<div class = "card">
+  <div class = "card-container">
+    <div class = "card-content">
+      <h2>Penn State Blue and White Game</h2>
+      <img align = "center" src = "https://dgiqkglfef83i.cloudfront.net/images/2023/4/15/Blue-White.png" alt = "B+W Game Image">
+      <p>With all hype on the upcoming football season, the Blue and White game gives the fans something to look forward to watching in the spring!</p>
+      <a class = 'details'>
+      <button id = 'details' >Details</button>
+      </a>
+    </div>
   </div>
-  <div class="card">
-    <img alt="real estate logo" src="./housepic.jpg">
-    <div class="card-content"> 
-      <h2>Two Pod Realty</h2> 
-      <p id="description">Real Estate Company Focused on delivering the best properties in the State College Area</p> 
-      <button class="details-button" id="detailsBtn">Details</button>
-    </div> 
-  </div> 
-  
-  <button id="btn">Duplicator</button>
-  <button id="colorBtn">BGColorChanger</button>
-  <button id="Headingbtn">HeadingChanger</button>
-  <button id="dltbtn">DeleteCard</button>
+</div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  mounted() {
-    document.querySelector('#btn').addEventListener('click', () => {
-      const clone = document.querySelector('.card').cloneNode(true); // Clone the whole card
-      document.body.appendChild(clone);
-    });
-    
-    var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-    var letters = ["A", "B", "C", "D", "E", "F"];
-    
-    function randomColor() {
-      var color = "";
-      for (var i = 0; i < 3; i++) {
-        var index = Math.floor(Math.random() * (numbers.length + letters.length));
-        color += (index < numbers.length) ? numbers[index] : letters[index - numbers.length];
-      }
-      return color;
-    }
-    
-    document.querySelector('#colorBtn').addEventListener('click', () => {
-      const card = document.querySelector('.card');
-      // Change background color
-      card.style.backgroundColor = '#' + randomColor();
-    });
-    
-    // HEADING CHANGER
-    document.querySelector('#Headingbtn').addEventListener('click', () => {
-      const title = document.querySelector('h2');
-      title.innerText = "Super Pod 2 Realty";
-    });
-    
-    // Card delete
-    document.querySelector('#dltbtn').addEventListener('click', () => {
-      const cards = document.querySelectorAll('.card');
-      // Check if there are cards to delete
-      if (cards.length > 1) {
-        const lastCard = cards[cards.length - 1];
-        lastCard.parentNode.removeChild(lastCard);
-      }
-    });
-    
-    var original = document.querySelector('#description').innerText;
-    
-    document.querySelector('#detailsBtn').addEventListener('click', () => {
-      const description = document.querySelector('#description');
-      // Toggle the visibility of the description
-      if (description.innerText === 'none' || description.innerText === '') {
-        description.innerText = original; // Show the description
-      } else {
-        description.innerText = ''; // Hide the description
-      }
-    });
-  }
-}
-</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.card {
-  max-width: 400px;
-  margin: 0 auto;
-  border: 1px solid #0C0B0B;
-  background-color: #0C0B0B;
-  padding: 16px;
+  .card {
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  justify-content: space-evenly;
+}
+.card-container {
+  background-color: #041E42;
+  width: 20%;
+  height: 50%;
+  display: block;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.card img {
-  max-width: 100%;
-  height: auto;
+img {
+  width: 300px;
+  max-width: 80%;
+  border-radius: 10px;
 }
 
 .card-content {
-  flex: 1;
+  text-align: center;
+  color: white;
+  display: block;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
-/* Style for the Title label */
-h2 {
-  font-size: 24px;
-  margin: -10px 0;
-  /* Background color and border */
-  background-color: #F8471B;
-  /* Background color */
-  color: #fff;
-  /* Text color on the background */
-  padding: 8px 16px;
-  border-radius: 4px;
+.card-content h2 {
+  padding-top: 20px;
 }
 
-p {
-  font-size: 16px;
-  margin: 8px 0;
-  color: #fff;
+.buttons {
+    text-align: center;
 }
 
-a.details-button {
-  background-color: #EA5F0A;
-  color: #fff;
-  padding: 8px 16px;
+.buttons button{
+  margin-bottom: 20px;
   text-decoration: none;
-  border-radius: 4px;
+  background-color: #ffff;
+  color: #041E42;
+  padding: 8px 12px;
+  border-radius: 5px;
 }
+
+.card-content button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  background-color: #ffff;
+  color: #041E42;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.card-content button:active,
+.card-content button:focus,
+.card-content button:hover{
+  background-color: #041E42;
+  color: white;   
+}
+
+.card-content button a{
+  text-decoration: none;
+}
+
+
+@media (max-width: 800px) and (min-width: 500px){
+  .card-content button{
+    display: none;
+  }
+}
+
+@media (max-width: 500px){
+  .card{
+    max-width: 300px;
+  }
+  .card-content button{
+    display: none;
+  }
+}
+
 </style>
